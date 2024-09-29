@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <% include _bootstrap_lib%>
+  <script>
+    function deleteProductDetails(id)
+    {
+   
+    }
+
+  </script>
+</head>
+<body>
+<% include _header%>
+ <div class="container">
+  <h1 class="text-center">View Product Details : </h1>
+  <div class="table-responsive">
+   <table class="table table-hover table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>S.No</th>
+        <th>Image</th>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+     <%
+     for(index in productList)
+     {
+    %>
+    <tr id="row<%=productList[index]._id%>">
+      <td><%= parseInt(index) + 1%></td>
+      <td>
+        <img height="100" src="/product_images/<%=productList[index].image_file%>"
+    </td>
+    <td><%=productList[index].product_name%></td>
+    <td><%=productList[index].cat_id%></td>
+    <td><%=productList[index].product_description%></td>
+    <td><%=productList[index].product_price%></td>
+    <td>
+      <a href="/admin/edit_product/<%=productList[index]._id%>"> 
+         <button class="btn btn-primary">Edit</button>
+      </a>
+    </td>
+    <td>
+      <a href="/admin/delete_product/<%=productList[index]._id%>">
+        <button class="btn btn-danger">Delete</button></td>
+      </a>
+    </tr>
+    <%
+     }
+     %>
+
+    </tbody>
+   </table>
+   
+  </div> 
+
+</div> 
+</body>
+</html>
